@@ -21,7 +21,10 @@ h4.gameColor{
     width: 800px;
     height: 600px;
     background-color: #3f69a4;
+    /*background-image: url(http://api.met.no/weatherapi/weathericon/1.1/?symbol=22;content_type=image/png;);*/
+    background-image: url(http://openweathermap.org/img/w/10d.png);
     float:left;
+
 }
 .CoinScore{
     color: #ffd800;

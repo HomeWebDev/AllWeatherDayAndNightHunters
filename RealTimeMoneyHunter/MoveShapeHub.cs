@@ -4,6 +4,8 @@ using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using System.Net;
+using System.Drawing;
 
 namespace MoveShapeDemo
 {
@@ -37,6 +39,42 @@ namespace MoveShapeDemo
                 null,
                 BroadcastInterval,
                 BroadcastInterval);
+
+
+
+            //Test of API usage
+
+            //Image im = new Image();
+            //im = http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png;
+
+
+            //Bitmap bitmap = new Bitmap(@"C:\image.png");
+
+            //Bitmap bitmap = new Bitmap(@"http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png");
+
+
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.DownloadFile("http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png", "weatherImage.png");
+            }
+
+            
+
+            string url = string.Format(@"http://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=0efffa3566c0a86b9a03fb679a5bab08");
+            WebClient client = new WebClient();
+
+            string jsonstring = client.DownloadString(url);
+
+
+
+            int test = new int();
+
+            //string url = string.Format(@"http://localhost:49468/api/Subscribers/SubscriberNumber/{0}", id);
+            //WebClient client = new WebClient();
+
+            //string jsonstring = client.DownloadString(url);
+
+            //Subscriber new_subscriber = JsonConvert.DeserializeObject<Subscriber>(jsonstring);
         }
         public void BroadcastShape(object state)
         {
