@@ -43,69 +43,69 @@ namespace MoveShapeDemo
 
 
 
-            //Test of API usage
+            ////Test of API usage
 
-            //Image im = new Image();
-            //im = http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png;
-
-
-            //Bitmap bitmap = new Bitmap(@"C:\image.png");
-
-            //Bitmap bitmap = new Bitmap(@"http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png");
+            ////Image im = new Image();
+            ////im = http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png;
 
 
-            using (WebClient webClient = new WebClient())
-            {
-                webClient.DownloadFile("http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png", "weatherImage.png");
-            }
+            ////Bitmap bitmap = new Bitmap(@"C:\image.png");
+
+            ////Bitmap bitmap = new Bitmap(@"http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png");
+
+
+            //using (WebClient webClient = new WebClient())
+            //{
+            //    webClient.DownloadFile("http://api.met.no/weatherapi/weathericon/1.1/?symbol=5;content_type=image/png", "weatherImage.png");
+            //}
 
             
             
 
-            string url = string.Format(@"http://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=0efffa3566c0a86b9a03fb679a5bab08");
-            WebClient client = new WebClient();
-
-            string jsonstring = client.DownloadString(url);
-
-            var obj = JObject.Parse(jsonstring);
-
-            //Longitude and latitude of chosen city
-            string lon = (string)obj["coord"]["lon"];
-            string lat = (string)obj["coord"]["lat"];
-
-            //Weather icon representing weather at chosen city, to be used in backgrond image
-            string weatherIcon = (string)obj["weather"][0]["icon"];
-            
-            string timeStamp = DateTime.Now.ToString();
-            TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
-            double currentTimeDouble = span.TotalSeconds;
-            currentTimeDouble = Math.Round(currentTimeDouble);
-
-            string currentTimeString = currentTimeDouble.ToString();
-
-
-            string url2 = string.Format(@"https://maps.googleapis.com/maps/api/timezone/json?location=" + lat + "," + lon + "&timestamp=" + currentTimeString + "& key=AIzaSyAbWTrXF9-X76XxEZH2SsFFNLtdb2ojtAU");
-
-
-            WebClient client2 = new WebClient();
-
-            string jsonstring2 = client.DownloadString(url2);
-            var obj2 = JObject.Parse(jsonstring2);
-
-            //Time difference in seconds of chosen place compared to GMT(?) time
-            //To be used to calculate if night or day
-            string timeDifference = (string)obj2["dstOffset"];
-
-
-
-            int test = new int();
-
-            //string url = string.Format(@"http://localhost:49468/api/Subscribers/SubscriberNumber/{0}", id);
+            //string url = string.Format(@"http://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=0efffa3566c0a86b9a03fb679a5bab08");
             //WebClient client = new WebClient();
 
             //string jsonstring = client.DownloadString(url);
 
-            //Subscriber new_subscriber = JsonConvert.DeserializeObject<Subscriber>(jsonstring);
+            //var obj = JObject.Parse(jsonstring);
+
+            ////Longitude and latitude of chosen city
+            //string lon = (string)obj["coord"]["lon"];
+            //string lat = (string)obj["coord"]["lat"];
+
+            ////Weather icon representing weather at chosen city, to be used in backgrond image
+            //string weatherIcon = (string)obj["weather"][0]["icon"];
+            
+            //string timeStamp = DateTime.Now.ToString();
+            //TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
+            //double currentTimeDouble = span.TotalSeconds;
+            //currentTimeDouble = Math.Round(currentTimeDouble);
+
+            //string currentTimeString = currentTimeDouble.ToString();
+
+
+            //string url2 = string.Format(@"https://maps.googleapis.com/maps/api/timezone/json?location=" + lat + "," + lon + "&timestamp=" + currentTimeString + "& key=AIzaSyAbWTrXF9-X76XxEZH2SsFFNLtdb2ojtAU");
+
+
+            //WebClient client2 = new WebClient();
+
+            //string jsonstring2 = client.DownloadString(url2);
+            //var obj2 = JObject.Parse(jsonstring2);
+
+            ////Time difference in seconds of chosen place compared to GMT(?) time
+            ////To be used to calculate if night or day
+            //string timeDifference = (string)obj2["dstOffset"];
+
+
+
+            //int test = new int();
+
+            ////string url = string.Format(@"http://localhost:49468/api/Subscribers/SubscriberNumber/{0}", id);
+            ////WebClient client = new WebClient();
+
+            ////string jsonstring = client.DownloadString(url);
+
+            ////Subscriber new_subscriber = JsonConvert.DeserializeObject<Subscriber>(jsonstring);
         }
         public void BroadcastShape(object state)
         {
