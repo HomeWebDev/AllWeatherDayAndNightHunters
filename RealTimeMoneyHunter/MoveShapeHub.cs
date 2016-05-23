@@ -75,7 +75,7 @@ namespace MoveShapeDemo
 
             //Weather icon representing weather at chosen city, to be used in backgrond image
             string weatherIcon = (string)obj["weather"][0]["icon"];
-
+            
             string timeStamp = DateTime.Now.ToString();
             TimeSpan span = DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1, 0, 0, 0));
             double currentTimeDouble = span.TotalSeconds;
